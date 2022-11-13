@@ -12,9 +12,9 @@ public:
 		numerator_ = numerator;
 		denominator_ = denominator;
 	}
-	bool operator==(Fraction other) { return (numerator_ * (other.denominator_) == other.numerator_ * (numerator_)); }
+	bool operator==(Fraction other) { return (numerator_ * (other.denominator_) == other.numerator_ * (denominator_)); }
 	bool operator!=(Fraction other) { return !(*this == other); }
-	bool operator>(Fraction other) { return numerator_ * (other.denominator_) > other.numerator_ * (numerator_); }
+	bool operator>(Fraction other) { return numerator_ * (other.denominator_) > other.numerator_ * (denominator_); }
 	bool operator<(Fraction other) { return other > *this; }
 	bool operator>=(Fraction other) { return !(*this < other); }
 	bool operator<=(Fraction other) { return !(*this > other); }
@@ -22,7 +22,7 @@ public:
 
 int main()
 {
-	Fraction f1(4, 3);
+	Fraction f1(6, 11);
 	Fraction f2(6, 11);
 
 	std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
