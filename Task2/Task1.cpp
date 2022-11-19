@@ -19,9 +19,10 @@ public:
 	Fraction operator/(Fraction other) { return Fraction((numerator_ * (other.denominator_)), (denominator_ * other.numerator_));  }
 	Fraction operator-() {return Fraction (- numerator_, denominator_); }
 	Fraction& operator++() { numerator_ = numerator_ + denominator_; return *this;}
-	Fraction& operator++(int) { Fraction time = *this; numerator_ = numerator_ + denominator_; return *this; }
+	Fraction& operator++(int) { Fraction time(numerator_, denominator_); numerator_ = numerator_ + denominator_; return time; }
 	Fraction& operator--() { numerator_ = numerator_ - denominator_; return *this; }
-	Fraction& operator--(int) { Fraction time = *this; numerator_ = numerator_ - denominator_; return *this;	}
+	Fraction& operator--(int) { Fraction time(numerator_, denominator_); numerator_ = numerator_ - denominator_; return time;
+	}
 		std::string Print() {
 			std::string numeratorSTR = std::to_string(numerator_);
 			std::string denominatorSTR = std::to_string(denominator_);
@@ -59,4 +60,5 @@ int main()
 	std::cout << "--f1 = " << (fx).Print() << '\n';
 	fx = f1--;
 	std::cout << "f2-- = " << (fx).Print() << '\n';
+
 }
